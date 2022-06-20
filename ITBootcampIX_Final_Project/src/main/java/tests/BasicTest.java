@@ -35,6 +35,7 @@ public abstract class BasicTest {
     @BeforeMethod
     public void beforeMethod() {
         driver.get(baseUrl);
+        driver.manage().window().maximize();
     }
 
 
