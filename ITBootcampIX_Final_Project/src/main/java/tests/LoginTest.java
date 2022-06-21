@@ -41,7 +41,7 @@ public class LoginTest extends BasicTest{
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "[ERROR] URL does not contain /login");
     }
     @Test (priority = 400)
-    public void displaysErrorsWhenPasswordIsWrong (){
+    public void displaysErrorsWhenPasswordIsWrong(){
         String email = "admin@admin.com";
         String password = "password123";
         navPage.getLogInButton().click();
@@ -52,5 +52,21 @@ public class LoginTest extends BasicTest{
         Assert.assertEquals(messagePopUpPage.getMessageTextFromPopUp(), "Wrong password",
                 "[Error] Pop up message not correct");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "[ERROR] URL does not contain /login");
+    }
+    @Test (priority = 500)
+    public void login() throws InterruptedException {
+        String email = "admin@admin.com";
+        String password = "12345";
+        navPage.getLogInButton().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        Thread.sleep(1000);
+        Assert.assertTrue(driver.getCurrentUrl().contains("/home"), "[ERROR] URL does not contain /home");
+    }
+    @Test (priority = 600)
+    public void logout(){
+        Assert.assertTrue(navPage.getLogoutButton().isDisplayed(), "[Error] Logout button is not displayed");
+        navPage.getLogoutButton().click();
     }
 }
