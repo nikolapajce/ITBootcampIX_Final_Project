@@ -19,7 +19,6 @@ public abstract class BasicTest {
     protected SignupPage signupPage;
     protected CitiesPage citiesPage;
     protected MessagePopUpPage messagePopUpPage;
-  //  protected WebDriverWait wait;
 
     @BeforeClass
     public void beforeClass() {
@@ -33,20 +32,16 @@ public abstract class BasicTest {
         signupPage = new SignupPage(driver);
         citiesPage = new CitiesPage(driver);
         messagePopUpPage = new MessagePopUpPage(driver);
-    //    wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
     @BeforeMethod
     public void beforeMethod() {
         driver.get(baseUrl);
         driver.manage().window().maximize();
     }
-
-
     @AfterMethod
     public void afterMethod() {
         //Screenshot
     }
-
     @AfterClass
     public void afterClass() {
         driver.quit();

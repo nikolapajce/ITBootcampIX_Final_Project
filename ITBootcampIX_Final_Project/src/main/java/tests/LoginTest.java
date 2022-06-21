@@ -27,7 +27,6 @@ public class LoginTest extends BasicTest{
         Assert.assertEquals(driver.findElement(By.id("password")).getAttribute("type"), "password",
                 "[Error] Input field is not password");
     }
-
     @Test (priority = 300)
     public void displaysErrorsWhenUserDoesNotExist(){
         String email = "non-existing-user@gmal.com";
@@ -40,6 +39,18 @@ public class LoginTest extends BasicTest{
         Assert.assertEquals(messagePopUpPage.getMessageTextFromPopUp(), "User does not exists",
                 "[Error] Pop up message not correct");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "[ERROR] URL does not contain /login");
-
+    }
+    @Test (priority = 400)
+    public void displaysErrorsWhenPasswordIsWrong (){
+        String email = "admin@admin.com";
+        String password = "password123";
+        navPage.getLogInButton().click();
+        loginPage.getEmailInputField().sendKeys(email);
+        loginPage.getPasswordInputField().sendKeys(password);
+        loginPage.getLoginButton().click();
+        messagePopUpPage.waitForPopUpToBeVisible();
+        Assert.assertEquals(messagePopUpPage.getMessageTextFromPopUp(), "Wrong password",
+                "[Error] Pop up message not correct");
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "[ERROR] URL does not contain /login");
     }
 }

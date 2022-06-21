@@ -23,7 +23,6 @@ public class MessagePopUpPage {
     public String getMessageTextFromPopUp(){
         return driver.findElement(By.tagName("li")).getText();
     }
-
     public WebElement getCloseButtonFromPopUp(){
         return driver.findElement(By.xpath("//*[text()='Close']"));
     }
@@ -33,17 +32,12 @@ public class MessagePopUpPage {
     public String getMessageTextFromSuccessPopUp(){
         return driver.findElement(By.className("success")).getText();
     }
-
-
-
     public void waitForVerifyAccountPopUpToBeVisible (){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dlgVerifyAccount")));
     }
-
     public String getMessageTextFromVerifyAccountPopUp(){
         return driver.findElement(By.xpath("//div[contains(@class, 'v-card__title')]")).getText();
     }
-
     public WebElement getCloseButtonFromVerifyAccountPopUp(){
         return driver.findElement(By.className("btnClose"));
     }
