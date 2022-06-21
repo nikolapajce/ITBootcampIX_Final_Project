@@ -27,12 +27,14 @@ public class MessagePopUpPage {
         return driver.findElement(By.xpath("//*[text()='Close']"));
     }
     public void waitForSuccessPopUpToBeVisible(){
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("success")));
     }
     public String getMessageTextFromSuccessPopUp(){
         return driver.findElement(By.className("success")).getText();
     }
     public void waitForVerifyAccountPopUpToBeVisible (){
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dlgVerifyAccount")));
     }
     public String getMessageTextFromVerifyAccountPopUp(){
