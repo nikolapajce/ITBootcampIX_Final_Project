@@ -20,7 +20,7 @@ public class MessagePopUpPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("v-snack__content")));
     }
-    public String getMessageTextFromPopUp(){
+    public String getMessageFromPopUp(){
         return driver.findElement(By.tagName("li")).getText();
     }
     public WebElement getCloseButtonFromPopUp(){
@@ -30,14 +30,14 @@ public class MessagePopUpPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("success")));
     }
-    public String getMessageTextFromSuccessPopUp(){
+    public String getMessageFromSuccessPopUp(){
         return driver.findElement(By.className("success")).getText();
     }
     public void waitForVerifyAccountPopUpToBeVisible (){
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("dlgVerifyAccount")));
     }
-    public String getMessageTextFromVerifyAccountPopUp(){
+    public String getMessageFromVerifyAccountPopUp(){
         return driver.findElement(By.xpath("//div[contains(@class, 'v-card__title')]")).getText();
     }
     public WebElement getCloseButtonFromVerifyAccountPopUp(){
