@@ -1,22 +1,16 @@
 package tests;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-
-import java.time.Duration;
 
 public class LoginTest extends BasicTest{
 
     @Test (priority = 100)
-    public void visitsTheLoginPage() throws InterruptedException {
+    public void visitsTheLoginPage() {
         navPage.getChangeLanguageButton().click();
         navPage.getENButton().click();
         navPage.getLogInButton().click();
-        Thread.sleep(1000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "[ERROR] URL does not contain /login");
     }
     @Test (priority = 200)
@@ -36,7 +30,7 @@ public class LoginTest extends BasicTest{
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         messagePopUpPage.waitForPopUpToBeVisible();
-        Assert.assertEquals(messagePopUpPage.getMessageTextFromPopUp(), "User does not exists",
+        Assert.assertEquals(messagePopUpPage.getMessageFromPopUp(), "User does not exists",
                 "[Error] Pop up message not correct");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "[ERROR] URL does not contain /login");
     }
@@ -49,19 +43,18 @@ public class LoginTest extends BasicTest{
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
         messagePopUpPage.waitForPopUpToBeVisible();
-        Assert.assertEquals(messagePopUpPage.getMessageTextFromPopUp(), "Wrong password",
+        Assert.assertEquals(messagePopUpPage.getMessageFromPopUp(), "Wrong password",
                 "[Error] Pop up message not correct");
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "[ERROR] URL does not contain /login");
     }
     @Test (priority = 500)
-    public void login() throws InterruptedException {
+    public void login() {
         String email = "admin@admin.com";
         String password = "12345";
         navPage.getLogInButton().click();
         loginPage.getEmailInputField().sendKeys(email);
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
-        Thread.sleep(1000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/home"), "[ERROR] URL does not contain /home");
     }
     @Test (priority = 600)

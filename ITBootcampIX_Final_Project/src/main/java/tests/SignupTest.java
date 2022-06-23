@@ -5,9 +5,8 @@ import org.testng.annotations.Test;
 
 public class SignupTest extends BasicTest{
     @Test (priority = 100)
-    public void visitsTheSignupPage() throws InterruptedException {
+    public void visitsTheSignupPage() {
         navPage.getSignupButton().click();
-        Thread.sleep(1000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/signup"), "[ERROR] URL does not contain /signup");
     }
     @Test (priority = 200)
@@ -21,13 +20,12 @@ public class SignupTest extends BasicTest{
                 "[Error] Input field is not password");
     }
     @Test (priority = 300)
-    public void displaysErrorsWhenUserAlreadyExists() throws InterruptedException {
+    public void displaysErrorsWhenUserAlreadyExists() {
         String name = "Another User";
         String email = "admin@admin.com";
         String password = "12345";
         String confirmPassword = "12345";
         navPage.getSignupButton().click();
-        Thread.sleep(1000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/signup"), "[ERROR] URL does not contain /signup");
         signupPage.getNameInputField().sendKeys(name);
         signupPage.getEmailInputField().sendKeys(email);
@@ -37,7 +35,6 @@ public class SignupTest extends BasicTest{
         messagePopUpPage.waitForPopUpToBeVisible();
         Assert.assertEquals(messagePopUpPage.getMessageFromPopUp(), "E-mail already exists",
                 "[Error] Pop up message not correct");
-        Thread.sleep(1000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/signup"), "[ERROR] URL does not contain /signup");
     }
     @Test (priority = 400)

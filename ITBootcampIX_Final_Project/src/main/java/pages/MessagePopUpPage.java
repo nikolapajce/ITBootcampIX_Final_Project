@@ -10,7 +10,6 @@ import java.time.Duration;
 
 public class MessagePopUpPage {
     private WebDriver driver;
-
     public MessagePopUpPage(WebDriver driver) {
 
         this.driver = driver;

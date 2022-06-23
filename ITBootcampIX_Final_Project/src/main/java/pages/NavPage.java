@@ -20,7 +20,7 @@ public class NavPage {
         return driver.findElement(By.className("mdi-face"));
     }
     public WebElement getAdminButton() {
-        return driver.findElement(By.className("mdi-lock"));
+        return driver.findElement(By.className("btnAdmin"));
     }
     public WebElement getCitiesLinkFromDropdown() {
         return driver.findElement(By.className("btnAdminCities"));
