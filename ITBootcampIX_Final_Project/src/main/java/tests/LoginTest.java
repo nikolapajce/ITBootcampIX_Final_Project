@@ -48,13 +48,14 @@ public class LoginTest extends BasicTest{
         Assert.assertTrue(driver.getCurrentUrl().contains("/login"), "[ERROR] URL does not contain /login");
     }
     @Test (priority = 500)
-    public void login() {
+    public void login() throws InterruptedException {
         String email = "admin@admin.com";
         String password = "12345";
         navPage.getLogInButton().click();
         loginPage.getEmailInputField().sendKeys(email);
         loginPage.getPasswordInputField().sendKeys(password);
         loginPage.getLoginButton().click();
+        Thread.sleep(2000);
         Assert.assertTrue(driver.getCurrentUrl().contains("/home"), "[ERROR] URL does not contain /home");
     }
     @Test (priority = 600)
